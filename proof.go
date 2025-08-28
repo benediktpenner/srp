@@ -78,9 +78,6 @@ func (s *SRP) GoodServerProof(salt []byte, uname string, proof []byte) bool {
 
 // ClientProof constructs the clients proof from which it knows the key.
 func (s *SRP) ClientProof() ([]byte, error) {
-	if !s.isServer && !s.isServerProved {
-		return nil, fmt.Errorf("don't construct client proof until server is proved")
-	}
 	if s.cProof != nil {
 		return s.cProof, nil
 	}
